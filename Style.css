@@ -1,0 +1,38 @@
+body{
+    background: #0CAADC;
+    background: radial-gradient(circle, #11B5E4 0%, #1481BA 100%);
+}
+*{
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium'}
+form{
+    background: lightgray;
+    box-shadow: 10px 20px 20px;
+    width:300px;
+    margin-top: auto;
+    margin: 0 auto;
+    border : 1px solid grey;
+    padding: 15px;
+    border-radius: 5px;
+}
+label{
+    display: block;
+}
+input{
+    margin-bottom: 15px;
+    border : 1px solid lightgrey;
+    border-radius: 10px;
+    width: 100%;
+    padding: 10px;
+}
+input[type="submit"]{
+    background-color:#034748;
+    color: white;
+}
+h1{
+    text-align: center;
+}
+label[id="inicio"]{
+    text-align: center;
+    font-weight: bold;
+}
