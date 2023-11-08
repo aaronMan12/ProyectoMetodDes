@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda online</title>
+    <link rel="stylesheet" href="Estilos.css">
+</head>
+<body>
+   <header>
+        <h1>Tienda de abarrotes</h1>
+        <div class="container-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-cart">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+              </svg>
+              <div class="count-productos">
+                    <span id="contador-productos">0
+                    </span>
+              </div>
+              <div class="container-cart-products hidden-cart">
+                    <div class="cart-product">
+                    <div class="info-cart-product">
+                        <!-- Aquí va los productos que tendrá el carrito -->
+                    </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-close">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                          </svg>                         
+                    </div>
+                    <div class="cart-total">
+                        <h3>Total:</h3>
+                        <span class="total-pagar"><!-- Aqui el total a pagar --></span>
+                    </div>
+              </div>
+        </div>
+   </header> 
+   <div class="container-items">
+        <div class="item">
+                <figure>
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_801327-MLM40695590752_022020-F.webp" alt="producto" />
+                </figure>
+                <div class="info-producto">
+                   <h2>Mayonesa</h2>
+                    <p class="price">$48</p>
+                    <button>Añadir al carro</button>
+                </div>
+        </div>
+        <div class="item">
+            <figure>
+                <img src="https://m.media-amazon.com/images/I/71Y4HLf6kIL._AC_SX679_.jpg" alt="producto" />
+            </figure>
+            <div class="info-producto">
+               <h2>Nescafé clasico</h2>
+                <p class="price">$97</p>
+                <button>Añadir al carro</button>
+            </div>
+        </div>
+        <div class="item">
+            <figure>
+                <img src="https://res.cloudinary.com/walmart-labs/image/upload/c_pad,h_500,w_500,q_auto:best/v1698961147535/gr/images/product-images/img_large/00000007500234L.jpg" alt="producto" />
+            </figure>
+            <div class="info-producto">
+               <h2>Aceite 1-2-3</h2>
+                <p class="price">$45</p>
+                <button>Añadir al carro</button>
+            </div>
+        </div>
+        <div class="item">
+            <figure>
+                <img src="https://m.media-amazon.com/images/I/51g5aTnIONL._AC_SX679_.jpg" alt="producto" />
+            </figure>
+            <div class="info-producto">
+               <h2>Azucar Morena (Zulka)</h2>
+                <p class="price">$49</p>
+                <button>Añadir al carro</button>
+            </div>
+        </div>
+        <div class="item">
+            <figure>
+                <img src="https://m.media-amazon.com/images/I/81JgSW7e6UL.__AC_SX300_SY300_QL70_ML2_.jpg" alt="producto" />
+            </figure>
+            <div class="info-producto">
+               <h2>Lata de Chile en Rajas (Jalapeño en escabeche)</h2>
+                <p class="price">$30</p>
+                <button>Añadir al carro</button>
+            </div>
+        </div>
+   </div>
+</body>
+</html>
