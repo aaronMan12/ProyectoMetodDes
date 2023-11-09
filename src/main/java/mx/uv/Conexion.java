@@ -9,7 +9,7 @@ public class Conexion {
     private static String url = "jdbc:mysql://127.0.0.1:3306/TiendaAbarrotes?serverTimezone=UTC";
     private static String driverName = "com.mysql.cj.jdbc.Driver"; // com.mysql.cj.jdbc.Driver
     private static String username = "root";
-    private static String password = "mapache";
+    private static String password = "aaron";
     // variable de conexion
     private static Connection connection = null;
 

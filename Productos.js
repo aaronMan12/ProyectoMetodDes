@@ -28,7 +28,8 @@ axios.get('http://localhost/listaProductos')
     
             var botonAgregarAlCarrito = document.createElement('button');
             botonAgregarAlCarrito.textContent = 'Añadir al carro';
-            botonAgregarAlCarrito.className ='btnadd';botonAgregarAlCarrito.addEventListener('click', function() {
+            botonAgregarAlCarrito.className ='btnadd';
+            botonAgregarAlCarrito.addEventListener('click', function() {
             agregarAlCarrito(producto.id);
         });
         elementoProducto.appendChild(botonAgregarAlCarrito);
