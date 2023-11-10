@@ -1,4 +1,6 @@
-axios.get('http://localhost/listaProductos')
+const URL = 'http://localhost:80'
+
+axios.get(URL+'/listaProductos')
 .then(function (respuesta) {
         
         var productos = respuesta.data;
