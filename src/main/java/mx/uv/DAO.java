@@ -27,7 +27,8 @@ public class DAO {
             stm = (Statement) conn.createStatement();
             rs = stm.executeQuery(sql);
             while (rs.next()) {
-                Producto producto= new Producto(rs.getInt("idProducto"), rs.getString("nombre"), rs.getFloat("precio"), rs.getString("fotografia"));
+                Producto producto = new Producto(rs.getInt("idProducto"), rs.getString("nombre"), rs.getFloat("precio"),
+                        rs.getString("fotografia"));
                 listaDeProductos.add(producto);
             }
         } catch (Exception e) {
@@ -58,43 +59,22 @@ public class DAO {
         return listaDeProductos;
     }
 
-    public static String ActualizarUsuario(Usuario u) {
-        String mjs = "";
-        PreparedStatement st;
-        Conexion conn = null;
-        conn = (Conexion) Conexion.getConnection();
-        try {
-            String actualizacion = "update usuarios set ? where id=1";
-            st = (PreparedStatement) conn.prepareStatement(actualizacion);
-            st.setInt(1, u.getIdUsuario());
-            // stm = (PreparedStatement) conn.prepareStatement(sql);
-
-            if (st.executeUpdate(actualizacion) == 1) {
-                System.out.println("Actualizacion realizada");
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-
-        return mjs;
-    }
-
-    public static String crearUsuario(Usuario u) {
+    public static String agregarProducto(Producto u) {
         PreparedStatement stm = null;
         Connection conn = null;
         String msj = "";
 
         conn = Conexion.getConnection();
         try {
-            String sql = "INSERT INTO usuarios (nombre, password, correo) values (?,?,?)";
+            String sql = "INSERT INTO producto (nombre, precio, fotografia) values (?,?,?)";
             stm = (PreparedStatement) conn.prepareStatement(sql);
             stm.setString(1, u.getNombre());
-            stm.setString(2, u.getPassword());
-            stm.setString(3, u.getCorreo());
+            stm.setFloat(2, u.getPrecio());
+            stm.setString(3, u.getFotografia());
             if (stm.executeUpdate() > 0)
-                msj = "usuario agregado";
+                msj = "Producto agregado";
             else
-                msj = "usuario no agregado";
+                msj = "El producto no se pudo agregar";
 
         } catch (Exception e) {
             System.out.println(e);
@@ -111,6 +91,7 @@ public class DAO {
                 conn.close();
             } catch (Exception e) {
                 System.out.println(e);
+                msj = "Error:" + e;
             }
         }
         return msj;
@@ -122,12 +103,9 @@ public class DAO {
         Connection conexion;
         conexion = Conexion.getConnection();
         Usuario usuario = new Usuario();
-        RespuestaUsuario respuesta=new RespuestaUsuario();
+        RespuestaUsuario respuesta = new RespuestaUsuario();
         respuesta.setEstado(400);
-        /*
-         * stm = (Statement) conn.createStatement();
-         * rs = stm.executeQuery(sql);
-         */
+
         try {
             String sql = "select * from usuario where correo= ? and password= ?";
             pst = (PreparedStatement) conexion.prepareStatement(sql);
@@ -135,7 +113,7 @@ public class DAO {
             pst.setString(2, password);
             rs = pst.executeQuery();
             while (rs.next()) {
-                
+
                 usuario.setIdUsuario(rs.getInt("idUsuario"));
                 usuario.setNombre(rs.getString("nombre"));
                 usuario.setPassword(rs.getString("password"));
@@ -148,9 +126,9 @@ public class DAO {
 
         } catch (Exception e) {
             System.out.println(e);
-            //respuesta.setEstado(400);
+            // respuesta.setEstado(400);
             respuesta.setContenido(e.toString());
-           
+
         } finally {
             try {
                 conexion.close();
@@ -160,6 +138,74 @@ public class DAO {
         }
         return respuesta;
 
+    }
+
+    public static String actualizarProducto(Producto producto) {
+        Connection connection;
+        String mjs = null;
+        PreparedStatement st;
+
+        connection = Conexion.getConnection();
+        try {
+            String actualizacion = " update producto set nombre=?, precio=?, fotografia=?  where idProducto=?";
+            st = (PreparedStatement) connection.prepareStatement(actualizacion);
+            st.setString(1, producto.getNombre());
+            st.setFloat(2, producto.getPrecio());
+            st.setString(3, producto.getFotografia());
+            st.setInt(4, producto.getIdProducto());
+
+            int respuesta = st.executeUpdate();
+
+            if (respuesta != 0) {
+                mjs = "Actualizacion realizada";
+            } else {
+
+                mjs = "Error al actualizar el procuato";
+            }
+        } catch (Exception e) {
+            System.out.println("Error de parametros" + e);
+
+        }
+        try {
+            connection.close();
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+
+        return mjs;
+    }
+
+    public static String borrarProducto(Integer idProducto) {
+        Connection connection;
+        connection = Conexion.getConnection();
+        PreparedStatement pst;
+        String msj = null;
+
+        try {
+            String borrarProducto = "DELETE FROM producto WHERE idProducto = ?";
+            pst = connection.prepareStatement(borrarProducto);
+            pst.setInt(1, idProducto);
+            int respuesta = pst.executeUpdate();
+            
+            if (respuesta != 0) {
+                msj = "Se realizo el borrado el producto con id:" + idProducto;
+
+            } else {
+                msj = "No se pudo borrar el producto";
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            connection.close();
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+
+        return msj;
     }
 
 }

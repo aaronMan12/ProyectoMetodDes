@@ -34,6 +34,7 @@ public class TiendaWS {
 
 
 
+
         post("loging", (request, response) -> {
             Gson gsonRespuesta=new Gson();
             Gson gson = new Gson();
@@ -56,10 +57,40 @@ public class TiendaWS {
         });
 
 
-
         get("listaProductos",(request, response) -> {
             response.type("application/json");
             return gson.toJson(DAO.dameProductos());
+        });
+
+
+        post("agregarProducto", (request, response)->{
+            String datosEntrada=request.body();
+            Gson gson=new Gson();
+            Producto producto=gson.fromJson(datosEntrada, Producto.class);
+
+            String respuesta=DAO.agregarProducto(producto);
+
+            return respuesta;
+        });
+
+        put("actualizarProducto/:idProducto", (request,response)->{
+            String idProducto=request.params(":idProducto");
+            String datosEntrada=request.body();
+            Gson gson=new Gson();
+            Producto producto=gson.fromJson(datosEntrada, Producto.class);
+            producto.setIdProducto(Integer.parseInt(idProducto) );
+            String respuesta= DAO.actualizarProducto(producto);
+
+            return respuesta;
+        });
+
+
+        delete("borrarProducto/:idProducto", (request,response)->{
+            int idProducto=Integer.parseInt(request.params(":idProducto"));
+
+            String respuesta=DAO.borrarProducto(idProducto);
+
+            return respuesta;
         });
     }
 }
