@@ -14,7 +14,8 @@ body{
 }
 
 .header{
-    background-color:#3A506B;
+    /*color barra*/
+    background-color:#005377;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -51,7 +52,8 @@ body{
 
 .header .nav-links a{
     font-size: 700;
-    color: #A29587;
+    /*color letras barra*/
+    color: #F4F4F9;
     text-decoration: none;    
 }
 
@@ -120,7 +122,8 @@ body{
     display: grid;
     box-sizing: border-box;
     grid-template-columns: repeat(3, 1fr);
-    background-color: #A29587;
+    /*color contenedor*/
+    background-color: #06A77D;
     gap: 20px;
     max-width: 65%;
     margin: auto;
@@ -167,4 +170,59 @@ body{
 
 .item:hover img {
     transform: scale(1.2);
+}
+.modificar{
+    display: block;
+    padding: 25px;
+}
+
+.modificar .formularios{
+    margin: 20px;
+}
+
+
+.contenedor{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 50px auto 45px auto;
+    width: 90%;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 10px;
+}
+
+.contenedor .Panel{
+    padding: 30px;
+    display: grid;
+    align-content: center;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: stretch;
+}
+.contenedor .Panel>form>input{
+    margin: 5px;
+}
+.contenedor>div{
+    
+    align-items: center;
+    justify-content:center;
+    background-color: #84ce8342;
+    height: 400px;
+    width: 400px;
+    border-radius: 20px;   
+    padding-top: 10px;
+    gap: 25px;
+    flex: 1 1 300px;
+}
+
+.contenedor .botonesadmin{
+    font-weight: 700;
+    color: #1b3039;
+    background: #dbd98d;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    padding: 10px;
 }

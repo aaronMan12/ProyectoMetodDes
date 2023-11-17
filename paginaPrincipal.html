@@ -9,42 +9,105 @@
 <body>
     <header class="header">
         <div class="logo">
-            <img alt="Abarrotes el compadre">
+            <img src="/img/Logo_mediano.png" width="100%" alt="Abarrotes el compadre">
         </div>
         <nav>
             <ul class="nav-links">
-                <li><a href="#">Categoria 1</a></li>
-                <li><a href="#">Categoria 2</a></li>
-                <li><a href="#">Categoria 3</a></li>
-                <li><a href="#">Categoria 4</a></li>
+                <li><a href="#">Limpieza</a></li>
+                <li><a href="#">Frutas y verduras</a></li>
+                <li><a href="#">Higiene Personal</a></li>
+                <li><a href="#">Productos Animales</a></li>
             </ul>
         </nav>
-        <a href="#" class="btncarrito"><button>Carrito</button></a>
+        <a href="#" class="btncarrito"><button ><img src="/img/carrito.png" width="50px" height="50px"></button></a>
     </header> 
     <div class="carrusel">
         <ul>
             <li>
-                <img src="https://picsum.photos/id/1/1080/200" alt="imagen 1">
+                <img src="/img/Publicidad1.png" alt="imagen 1">
             </li>
             <li>
-                <img src="https://picsum.photos/id/2/1080/200" alt="imagen 2">
+                <img src="/img/Publicidad2.png" alt="imagen 2">
             </li>
             <li>
-                <img src="https://picsum.photos/id/3/1080/200" alt="imagen 3">
+                <img src="/img/Publicidad3.png" alt="imagen 3">
             </li>
             <li>
-                <img src="https://picsum.photos/id/4/1080/200" alt="imagen 4">
+                <img src="/img/Publicidad4.png" alt="imagen 4">
             </li>
         </ul>
     </div>
-    <div>
+    
+    <div class="container-items" id="product-list">
         
     </div>
-    <div class="container-items" id="lista-de-productos">
-        
+
+    <div class="contenedor">
+        <div class="Panel">
+        <h2>Crear Producto</h2>
+            <form id="crear-producto">
+                <label for="nombre">Nombre:</label><br>
+                <input type="text" id="nombre" name="nombre"><br>
+                <label for="precio">Precio:</label><br>
+                <input type="text" id="precio" name="precio"><br>
+                <label for="fotografia">Fotografía:</label><br>
+                <input type="text" id="fotografia" name="fotografia"><br>
+                <input type="submit" value="Crear Producto" id="botonCrear" class="botonesadmin">
+            </form>
+        </div>
+        <div class="Panel" >
+            <h2>Actualizar Producto</h2>
+            <form id="actualizar-producto">
+                <label for="id">ID:</label><br>
+                <input type="text" id="acid" name="id"><br>
+                <label for="nombre">Nombre:</label><br>
+                <input type="text" id="acnombre" name="nombre"><br>
+                <label for="precio">Precio:</label><br>
+                <input type="text" id="acprecio" name="precio"><br>
+                <label for="fotografia">Fotografía:</label><br>
+                <input type="text" id="acfotografia" name="fotografia"><br>
+                <input type="submit" value="Actualizar Producto" id="botonActualizar" class="botonesadmin">
+            </form>
+        </div>
+        <div class="Panel">
+            <h2>Eliminar Producto</h2>
+            <form id="eliminar-producto">
+                <label for="id">ID:</label><br>
+                <input type="text" id="id" name="id"><br>
+                <input type="submit" value="Eliminar Producto" id="botonEliminar" class="botonesadmin">
+            </form>
+        </div>
+        <div>
+            <h2>Productos Existentes (tabla)</h2>
+    <table id="tabla-de-productos">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Fotografía</th>
+        </tr>
+        <!-- Los productos existentes se añaden aquí -->
+        <!-- Los productos en el carrito se añaden aquí -->
+        <tr>
+            <td>1</td>
+            <td>Producto 1</td>
+            <td>$99.99</td>
+            <td><img src="ruta/a/imagen1.jpg" alt="Imagen del Producto 1"></td>
+            </tr>
+        <tr>
+            <td>2</td>
+            <td>Producto 2</td>
+            <td>$49.99</td>
+            <td><img src="ruta/a/imagen2.jpg" alt="Imagen del Producto 2"></td>
+        </tr>
+
+    </table>
+        </div>
     </div>
+    
 </body>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="crudProductos.js"></script>
 <script src="Productos.js"></script>
 
     
