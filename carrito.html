@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+</head>
+<body>
+    <h1>Shopping Cart</h1>
+    <div id="product-list"></div>
+    
+    <table id="tabla-del-carrito">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Total</th>
+            <th>Acciones</th>
+        </tr>
+        <!-- Los productos en el carrito se añaden aquí -->
+        <tr>
+            <td>1</td>
+            <td>Producto 1</td>
+            <td>$99.99</td>
+            <td>1</td>
+            <td>$99.99</td>
+            <td><button>Eliminar</button></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Producto 2</td>
+            <td>$49.99</td>
+            <td>2</td>
+            <td>$99.98</td>
+            <td><button>Eliminar</button></td>
+        </tr>
+    </table>
+
+    <button id="boton-de-checkout">Realizar Checkout</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="carrito.js "></script>
+</body>
+</html>

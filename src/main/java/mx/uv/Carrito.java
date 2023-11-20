@@ -4,15 +4,19 @@ public class Carrito {
    Integer idCarrito;
     String nombre;
     float precio;
+    Integer idProducto;
 
      public Carrito() {
     }
 
-    public Carrito(Integer idCarrito, String nombre, float precio) {
+
+    public Carrito(Integer idCarrito, String nombre, float precio, Integer idProducto) {
         this.idCarrito = idCarrito;
         this.nombre = nombre;
         this.precio = precio;
+        this.idProducto = idProducto;
     }
+
 
     public Integer getIdCarrito() {
         return idCarrito;
@@ -36,6 +40,16 @@ public class Carrito {
 
     public void setPrecio(float precio) {
         this.precio = precio;
+    }
+
+
+    public Integer getIdProducto() {
+        return idProducto;
+    }
+
+
+    public void setIdProducto(Integer idProducto) {
+        this.idProducto = idProducto;
     }
 
 

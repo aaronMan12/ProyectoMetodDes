@@ -252,14 +252,15 @@ public class DAO {
          List<Carrito> listaCarrito = new ArrayList<>();
         conn = Conexion.getConnection();
         try {
-             String sql = "SELECT idCarrito,p.nombre, p.precio FROM carrito sc JOIN producto p ON sc.idProducto = p.idProducto";
+             String sql = "SELECT idCarrito,p.nombre, p.precio,p.idProducto FROM carrito sc JOIN producto p ON sc.idProducto = p.idProducto";
             stm = (Statement) conn.createStatement();
             rs = stm.executeQuery(sql);
                     while (rs.next()) {
+                        Integer idProducto = rs.getInt("idProducto");
                         Integer idCarrito = rs.getInt("idCarrito");
                         String productName = rs.getString("nombre");
                         float price = rs.getFloat("precio");
-                        listaCarrito.add(new Carrito(idCarrito,productName, price));
+                        listaCarrito.add(new Carrito(idCarrito,productName, price,idProducto));
                     }
             
         } catch (Exception e) {
