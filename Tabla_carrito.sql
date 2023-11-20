@@ -1,4 +1,4 @@
-CREATE TABLE `abarrotes`.`carrito` (
+CREATE TABLE carrito (
   `idCarrito` INT NOT NULL AUTO_INCREMENT,
   `idProducto` INT NULL,
   PRIMARY KEY (`idCarrito`),
