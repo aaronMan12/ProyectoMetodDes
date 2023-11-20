@@ -85,5 +85,25 @@ public class TiendaWS {
 
             return respuesta;
         });
+
+        post("/carrito/agregar/:idProducto", (request,response)->{
+            int idProducto=Integer.parseInt(request.params(":idProducto"));
+            String respuesta=DAO.agregarAlCarrito(idProducto);
+            return respuesta;
+        });
+
+        get("carrito",(request,response)->{
+            response.type("application/json");
+            
+            return gson.toJson(DAO.ListaCarrito());
+        });
+
+        delete("borrar-producto-carrito/:idProducto", (request,response)->{
+            int idProducto=Integer.parseInt(request.params(":idProducto"));
+
+            String respuesta=DAO.borrarProductodelCarrito(idProducto);
+
+            return respuesta;
+        });  
     }
 }
