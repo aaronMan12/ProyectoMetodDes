@@ -5,6 +5,6 @@ CREATE TABLE carrito (
   INDEX `idProducto_idx` (`idProducto` ASC),
   CONSTRAINT `idProducto`
     FOREIGN KEY (`idProducto`)
-    REFERENCES `abarrotes`.`producto` (`idProducto`)
+    REFERENCES `tiendaabarrotes`.`producto` (`idProducto`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);

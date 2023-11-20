@@ -22,39 +22,21 @@
         <a href="carrito.html" class="btncarrito"><button ><img src="/img/carrito.png" width="50px" height="50px"></button></a>
     </header> 
     <div class="contenedor">
-        <h1>Shopping Cart</h1>
-    <div id="product-list"></div>
-    
-    <table id="tabla-del-carrito">
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Precio</th>
-            <th>Cantidad</th>
-            <th>Total</th>
-            <th>Acciones</th>
-        </tr>
-        <!-- Los productos en el carrito se añaden aquí -->
-        <tr>
-            <td>1</td>
-            <td>Producto 1</td>
-            <td>$99.99</td>
-            <td>1</td>
-            <td>$99.99</td>
-            <td><button>Eliminar</button></td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Producto 2</td>
-            <td>$49.99</td>
-            <td>2</td>
-            <td>$99.98</td>
-            <td><button>Eliminar</button></td>
-        </tr>
-    </table>
+        <div class="Panel" >
+            <h2>Actualizar Producto</h2>
+            <form id="actualizar-producto">
+                <label for="id">ID:</label><br>
+                <input type="text" id="acid" name="id"><br>
+                <label for="nombre">Nombre:</label><br>
+                <input type="text" id="acnombre" name="nombre"><br>
+                <label for="precio">Precio:</label><br>
+                <input type="text" id="acprecio" name="precio"><br>
+                <label for="fotografia">Fotografía:</label><br>
+                <input type="text" id="acfotografia" name="fotografia"><br>
+                <input type="submit" value="Actualizar Producto" id="botonActualizar" class="botonesadmin">
+            </form>
+        </div>
     </div>
-
-    <button id="boton-de-checkout">Realizar Checkout</button>
 </body>
 <footer>
     <div class="footer">
@@ -63,8 +45,10 @@
     <li><a href="Crear.html">Crear Producto </a></li>
     <li><a href="Actualizar.html">Actualizar Producto</a></li>
     <li><a href="Eliminar.html">Eliminar producto</a></li>
+
     </ul>
     </div>
+    
     <div class="row">
     Abarrotes el compadre SA de CV
     </div>
@@ -74,7 +58,6 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="crudProductos.js"></script>
 <script src="Productos.js"></script>
-<script src="carrito.js "></script>
 
 
     

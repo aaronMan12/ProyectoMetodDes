@@ -22,39 +22,16 @@
         <a href="carrito.html" class="btncarrito"><button ><img src="/img/carrito.png" width="50px" height="50px"></button></a>
     </header> 
     <div class="contenedor">
-        <h1>Shopping Cart</h1>
-    <div id="product-list"></div>
-    
-    <table id="tabla-del-carrito">
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Precio</th>
-            <th>Cantidad</th>
-            <th>Total</th>
-            <th>Acciones</th>
-        </tr>
-        <!-- Los productos en el carrito se añaden aquí -->
-        <tr>
-            <td>1</td>
-            <td>Producto 1</td>
-            <td>$99.99</td>
-            <td>1</td>
-            <td>$99.99</td>
-            <td><button>Eliminar</button></td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Producto 2</td>
-            <td>$49.99</td>
-            <td>2</td>
-            <td>$99.98</td>
-            <td><button>Eliminar</button></td>
-        </tr>
-    </table>
+        <div class="Panel">
+            <h2>Eliminar Producto</h2>
+            <form id="eliminar-producto">
+                <label for="id">ID:</label><br>
+                <input type="text" id="id" name="id"><br>
+                <input type="submit" value="Eliminar Producto" id="botonEliminar" class="botonesadmin">
+            </form>
+        </div>
     </div>
-
-    <button id="boton-de-checkout">Realizar Checkout</button>
+    
 </body>
 <footer>
     <div class="footer">
@@ -74,7 +51,6 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="crudProductos.js"></script>
 <script src="Productos.js"></script>
-<script src="carrito.js "></script>
 
 
     
