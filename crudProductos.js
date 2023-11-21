@@ -1,7 +1,6 @@
 
 const URL = 'http://localhost:80/'
-const accion_boton_elimiar
-    = document.getElementById("botonEliminar")
+
 const accion_boton_actualizar
     = document.getElementById("botonActualizar")
 const accion_boton_crear
@@ -28,12 +27,7 @@ accion_boton_actualizar.addEventListener('click',
 
     modificarProducto(idProducto,nombre,precio,fotografia)
 });
-accion_boton_elimiar.addEventListener('click',
-    function (evt){
-    evt.preventDefault();
-    const idProducto = document.getElementById("id").value;
-    eliminarProducto(idProducto);
-});
+
 
 function mostrarProducto(){
     axios.get(URL+'/listaProductos')
@@ -95,15 +89,6 @@ function agregarProducto(_nombre,_precio,_foto) {
     })
 }
 
-function eliminarProducto(_idProducto) {
-axios.delete(URL + 'borrarProducto/' + _idProducto)
-    .then( function (response) {
-        alert(response.data)
-        location.reload();
-    }).catch(function (error) {
-        console.log(error)
-    });
-}
 
 function modificarProducto(_idProducto,_nombre,_precio,_foto){
    console.log(_idProducto,_nombre,_precio,_foto)
@@ -120,4 +105,28 @@ function modificarProducto(_idProducto,_nombre,_precio,_foto){
         .catch(function (error) {
             console.log(error)
         });
+
+
+     const accion_boton_elimiar
+    = document.getElementById('eliminar-producto')
+
+
+
+accion_boton_elimiar.addEventListener('submit',
+    function (evt){
+        console.log("entro event")
+    evt.preventDefault();
+    const idProducto = document.getElementById("id").value;
+    eliminarProducto(idProducto);
+});
+
+function eliminarProducto(_idProducto) {
+axios.delete(URL + 'borrarProducto/' + _idProducto)
+    .then( function (response) {
+        alert(response.data)
+        location.reload();
+    }).catch(function (error) {
+        console.log(error)
+    });
+}
 }

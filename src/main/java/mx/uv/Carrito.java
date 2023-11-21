@@ -5,17 +5,23 @@ public class Carrito {
     String nombre;
     float precio;
     Integer idProducto;
+    Integer cantidad;
 
-     public Carrito() {
-    }
-
-
-    public Carrito(Integer idCarrito, String nombre, float precio, Integer idProducto) {
+     public Carrito(Integer idCarrito, String nombre, float precio, Integer idProducto, Integer cantidad) {
         this.idCarrito = idCarrito;
         this.nombre = nombre;
         this.precio = precio;
         this.idProducto = idProducto;
+        this.cantidad = cantidad;
     }
+
+
+
+
+    public Carrito() {
+    }
+
+
 
 
     public Integer getIdCarrito() {
@@ -50,6 +56,20 @@ public class Carrito {
 
     public void setIdProducto(Integer idProducto) {
         this.idProducto = idProducto;
+    }
+
+
+
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+
+
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
     }
 
 

@@ -3,56 +3,7 @@
 
 const url = 'http://localhost:80'
 
-axios.get(url +'/listaProductos')
-.then(function (respuesta) {
-        
-        var productos = respuesta.data;
-        var listaDeProductos = document.getElementById('product-list');
-        
-        productos.forEach(function(producto) {
-        
-            var elementoProducto = document.createElement('div');
-            elementoProducto.className ='item';
-            
-            var elementoProductoInfo = document.createElement('div');
-            elementoProductoInfo.className ='info-producto';
-            elementoProducto.appendChild(elementoProductoInfo);
-    
-            var nombreDelProducto = document.createElement('h2');
-            nombreDelProducto.textContent = producto.nombre;
-            elementoProductoInfo.appendChild(nombreDelProducto);
-    
-            var precioDelProducto = document.createElement('p');
-            precioDelProducto.className='price'
-            precioDelProducto.textContent = 'Precio: $' + producto.precio;
-            elementoProductoInfo.appendChild(precioDelProducto);
-    
-            var botonAgregarAlCarrito = document.createElement('button');
-            botonAgregarAlCarrito.textContent = 'Añadir al carro';
-            botonAgregarAlCarrito.className ='btnadd';
-            botonAgregarAlCarrito.addEventListener('click', function() {
-            agregarAlCarrito(producto.idProducto);
-        });
-        elementoProducto.appendChild(botonAgregarAlCarrito);
-
-        listaDeProductos.appendChild(elementoProducto);
-    });
-})
-.catch(function (error) {
-    console.log(error);
-});
-
-function agregarAlCarrito(idDelProducto) {
-console.log('Agregar al carrito: ' + idDelProducto);
- axios.post(url + `/carrito/agregar/${idDelProducto}`)
- .then(response => {
-     console.log(response.data);
-     updateCart();
- })
- .catch(error => {
-     console.error(error);
- });
-}
+updateCart();
 
 function eliminarDelCarrito(id) {
     console.log('Eliminar del carrito: ' + id);
@@ -63,6 +14,7 @@ function eliminarDelCarrito(id) {
     }).catch(function (error) {
         console.log(error)
     });
+    updateCart();
 }
 
 function updateCart() {
@@ -90,12 +42,12 @@ function updateCart() {
                 celdaPrecio.textContent = producto.precio;
     
                 var celdaCantidad = fila.insertCell();
-                celdaCantidad.textContent = 1;
+                celdaCantidad.textContent = producto.cantidad;
                 celdaCantidad.contentEditable = 'true'; 
                 
 
                 var celdaTotal = fila.insertCell();
-                celdaTotal.textContent = producto.precio * 1 ;
+                celdaTotal.textContent = producto.precio * producto.cantidad ;
     
                 celdaCantidad.oninput = function() {
                     var cantidad = Number(celdaCantidad.textContent);

@@ -214,11 +214,13 @@ public class DAO {
         String msj = "";
 
         conn = Conexion.getConnection();
-            
+        
         try {
-            String addToCartQuery = "INSERT INTO carrito (idProducto) VALUES (?) ";   
+        
+            String addToCartQuery = "INSERT INTO carrito (idCarrito, idProducto) VALUES (?,?) ON DUPLICATE KEY UPDATE cantidad = cantidad + 1 ";   
             stm = (PreparedStatement) conn.prepareStatement(addToCartQuery);
             stm.setInt(1, idProducto);
+            stm.setInt(2, idProducto);
             if (stm.executeUpdate() > 0)
                 msj = "Producto agregado al carrito";
             else
@@ -252,15 +254,16 @@ public class DAO {
          List<Carrito> listaCarrito = new ArrayList<>();
         conn = Conexion.getConnection();
         try {
-             String sql = "SELECT idCarrito,p.nombre, p.precio,p.idProducto FROM carrito sc JOIN producto p ON sc.idProducto = p.idProducto";
+             String sql = "SELECT idCarrito,p.nombre, p.precio,p.idProducto, sc.cantidad FROM carrito sc JOIN producto p ON sc.idProducto = p.idProducto";
             stm = (Statement) conn.createStatement();
             rs = stm.executeQuery(sql);
                     while (rs.next()) {
+                        Integer cantidad = rs.getInt("cantidad");
                         Integer idProducto = rs.getInt("idProducto");
                         Integer idCarrito = rs.getInt("idCarrito");
                         String productName = rs.getString("nombre");
                         float price = rs.getFloat("precio");
-                        listaCarrito.add(new Carrito(idCarrito,productName, price,idProducto));
+                        listaCarrito.add(new Carrito(idCarrito,productName, price,idProducto,cantidad));
                     }
             
         } catch (Exception e) {
