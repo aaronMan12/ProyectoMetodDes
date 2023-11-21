@@ -207,5 +207,122 @@ public class DAO {
 
         return msj;
     }
+    
+        public static String agregarAlCarrito(int idProducto){
+         PreparedStatement stm = null;
+        Connection conn = null;
+        String msj = "";
+
+        conn = Conexion.getConnection();
+            
+        try {
+            String addToCartQuery = "INSERT INTO carrito (idProducto) VALUES (?) ";   
+            stm = (PreparedStatement) conn.prepareStatement(addToCartQuery);
+            stm.setInt(1, idProducto);
+            if (stm.executeUpdate() > 0)
+                msj = "Producto agregado al carrito";
+            else
+                msj = "El producto no se pudo agregar";
+
+        }catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            if (stm != null) {
+                try {
+                    stm.close();
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+                stm = null;
+            }
+            try {
+                conn.close();
+            } catch (Exception e) {
+                System.out.println(e);
+                msj = "Error:" + e;
+            }
+        }
+        return msj;
+    }
+
+    public static List<Carrito> ListaCarrito() {
+         Statement stm = null;
+        ResultSet rs = null;
+        Connection conn = null;
+         List<Carrito> listaCarrito = new ArrayList<>();
+        conn = Conexion.getConnection();
+        try {
+             String sql = "SELECT idCarrito,p.nombre, p.precio,p.idProducto FROM carrito sc JOIN producto p ON sc.idProducto = p.idProducto";
+            stm = (Statement) conn.createStatement();
+            rs = stm.executeQuery(sql);
+                    while (rs.next()) {
+                        Integer idProducto = rs.getInt("idProducto");
+                        Integer idCarrito = rs.getInt("idCarrito");
+                        String productName = rs.getString("nombre");
+                        float price = rs.getFloat("precio");
+                        listaCarrito.add(new Carrito(idCarrito,productName, price,idProducto));
+                    }
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            if (rs != null)
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    System.out.println(e);
+                }
+            rs = null;
+            if (stm != null) {
+                try {
+                    stm.close();
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+                stm = null;
+            }
+            try {
+                conn.close();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+
+        return listaCarrito;
+  
+    }
+
+    public static String borrarProductodelCarrito(Integer idProducto) {
+        Connection connection;
+        connection = Conexion.getConnection();
+        PreparedStatement pst;
+        String msj = null;
+
+        try {
+            String borrarProducto = "DELETE  FROM carrito WHERE idProducto= ?";
+            pst = connection.prepareStatement(borrarProducto);
+            pst.setInt(1, idProducto);
+            int respuesta = pst.executeUpdate();
+            
+            if (respuesta != 0) {
+                msj = "Se realizo el borrado el producto con id:" + idProducto;
+
+            } else {
+                msj = "No se pudo borrar el producto";
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            connection.close();
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+
+        return msj;
+    }
+
 
 }

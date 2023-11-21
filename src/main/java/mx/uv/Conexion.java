@@ -13,13 +13,13 @@ public class Conexion {
     // variable de conexion
     private static Connection connection = null;
 
-    public static Connection getConnection(){
+    public static Connection getConnection() {
         try {
             Class.forName(driverName);
             connection = DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
             System.out.println(" SQL:" + e);
-        } catch (ClassNotFoundException e){
+        } catch (ClassNotFoundException e) {
             System.out.println("Driver:" + e);
         }
         return connection;
@@ -29,6 +29,3 @@ public class Conexion {
         return null;
     }
 }
-
-
-

@@ -4,7 +4,7 @@ axios.get(URL+'/listaProductos')
 .then(function (respuesta) {
         
         var productos = respuesta.data;
-        var listaDeProductos = document.getElementById('lista-de-productos');
+        var listaDeProductos = document.getElementById('product-list');
         
         productos.forEach(function(producto) {
         
