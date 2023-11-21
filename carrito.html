@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abarrotes</title>
-    <link rel="stylesheet" href="EstilosAdmin.css">
+    <link rel="stylesheet" href="EstilosCarrito.css">
 </head>
 <body>
     <header class="header">
@@ -22,7 +22,8 @@
         <a href="carrito.html" class="btncarrito"><button ><img src="/img/carrito.png" width="50px" height="50px"></button></a>
     </header> 
     <div class="contenedor">
-        <h1>Shopping Cart</h1>
+    <div class="panel">
+        <h2>Shopping Cart</h1>
     <div id="product-list"></div>
     
     <table id="tabla-del-carrito">
@@ -35,26 +36,12 @@
             <th>Acciones</th>
         </tr>
         <!-- Los productos en el carrito se añaden aquí -->
-        <tr>
-            <td>1</td>
-            <td>Producto 1</td>
-            <td>$99.99</td>
-            <td>1</td>
-            <td>$99.99</td>
-            <td><button>Eliminar</button></td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Producto 2</td>
-            <td>$49.99</td>
-            <td>2</td>
-            <td>$99.98</td>
-            <td><button>Eliminar</button></td>
-        </tr>
+    </div>
     </table>
+    <button id="boton-de-checkout">Realizar Checkout</button>
     </div>
 
-    <button id="boton-de-checkout">Realizar Checkout</button>
+    
 </body>
 <footer>
     <div class="footer">
