@@ -15,7 +15,7 @@ eliminarProducto(idProducto);
 });
 
 function eliminarProducto(_idProducto) {
-axios.delete(URL + 'borrarProducto/' + _idProducto)
+axios.delete(URL + "borrarProducto/" + _idProducto)
 .then( function (response) {
     alert(response.data)
     location.reload();

@@ -32,7 +32,7 @@ axios.get(URL+'/listaProductos')
             botonAgregarAlCarrito.textContent = 'Añadir al carro';
             botonAgregarAlCarrito.className ='btnadd';
             botonAgregarAlCarrito.addEventListener('click', function() {
-            agregarAlCarrito(producto.id);
+            agregarAlCarrito(producto.idProducto);
         });
         elementoProducto.appendChild(botonAgregarAlCarrito);
 
@@ -44,7 +44,14 @@ axios.get(URL+'/listaProductos')
 });
 
 function agregarAlCarrito(idDelProducto) {
-console.log('Agregar al carrito: ' + idDelProducto);
 // Agrega tu código aquí para agregar el producto al carrito.
 // Esto podría implicar enviar una solicitud a tu servidor, actualizar la interfaz de usuario, etc.
+console.log('Agregar al carrito: ' + idDelProducto);
+ axios.post(URL + `/carrito/agregar/${idDelProducto}`)
+ .then(response => {
+     console.log(response.data);
+ })
+ .catch(error => {
+     console.error(error);
+ });
 }
