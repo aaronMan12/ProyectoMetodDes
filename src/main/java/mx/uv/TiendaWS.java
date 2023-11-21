@@ -13,7 +13,7 @@ public class TiendaWS {
     public static void main(String[] args) {
      
 
-        port(80);
+        port(80); //80
 
         options("/*", (request, response) -> {
             String accessControlRequestHeaders = request.headers("Access-Control-Request-Headers");
