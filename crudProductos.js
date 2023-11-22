@@ -14,7 +14,12 @@ accion_boton_crear.addEventListener(
     const _nombre = document.getElementById("nombre").value
     const _precio = document.getElementById("precio").value
     const _fotografia = document.getElementById("fotografia").value
-    agregarProducto(_nombre,_precio,_fotografia)
+    if (!isNaN(_precio)) {
+        agregarProducto(_nombre,_precio,_fotografia)
+    }
+    else{
+       alert("Precio tiene que ser un numero")
+    }
 });
 
 accion_boton_actualizar.addEventListener('click',
@@ -24,7 +29,7 @@ accion_boton_actualizar.addEventListener('click',
     const nombre = document.getElementById("acnombre").value
     const precio = document.getElementById("acprecio").value
     const fotografia = document.getElementById("acfotografia").value
-
+        
     modificarProducto(idProducto,nombre,precio,fotografia)
 });
 

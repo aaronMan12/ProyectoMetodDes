@@ -32,8 +32,7 @@ function updateCart() {
             productos.forEach(function(producto) {
                 var fila = tablaDelCarrito.insertRow();
     
-                var celdaId = fila.insertCell();
-                celdaId.textContent = producto.idCarrito;
+            
     
                 var celdaNombre = fila.insertCell();
                 celdaNombre.textContent = producto.nombre;

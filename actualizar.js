@@ -1,4 +1,3 @@
-
 const URL = 'http://localhost:80/'
 
 const accion_boton_actualizar
@@ -34,6 +33,30 @@ const  idProducto =document.getElementById("acid").value
 const nombre = document.getElementById("acnombre").value
 const precio = document.getElementById("acprecio").value
 const fotografia = document.getElementById("acfotografia").value
-
-modificarProducto(idProducto,nombre,precio,fotografia)
+if (!isNaN(idProducto) && !isNaN(precio)) {
+    modificarProducto(idProducto,nombre,precio,fotografia)
+    
+}if (isNaN(precio)) {
+    alert("ERROR PRECIO TIENE QUE SER NUMERO")
+    
+} if(isNaN(idProducto)) {
+    alert("ERROR ID TIENE QUE SER NUMERO")   
+}
 });     
+
+
+var datosProducto = new URLSearchParams(window.location.search);
+    var id = datosProducto.get("id");
+    var nombre = datosProducto.get("nombre");
+    var precio = datosProducto.get("precio");
+    var foto = datosProducto.get("foto");
+    llenarformulario(id,nombre,precio,foto);
+    
+
+
+function llenarformulario(id, nombre, precio,fotografia) {
+    document.getElementById('acid').value = id;
+    document.getElementById('acnombre').value = nombre;
+    document.getElementById('acprecio').value = precio;
+    document.getElementById('acfotografia').value = fotografia;
+}

@@ -11,7 +11,13 @@ function (evt){
     console.log("entro event")
 evt.preventDefault();
 const idProducto = document.getElementById("id").value;
-eliminarProducto(idProducto);
+if (!isNaN(idProducto)) {
+    eliminarProducto(idProducto);
+}
+else{
+   alert("id  tiene que ser un numero")
+}
+
 });
 
 function eliminarProducto(_idProducto) {
