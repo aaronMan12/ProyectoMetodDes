@@ -16,7 +16,6 @@ axios.get(URL+'/listaProductos')
             elementoProducto.appendChild(imagenDelProducto);
             
             var elementoProductoInfo = document.createElement('div');
-            elementoProductoInfo.className ='info-producto';
             elementoProducto.appendChild(elementoProductoInfo);
     
             var nombreDelProducto = document.createElement('h2');

@@ -57,6 +57,13 @@ public class TiendaWS {
             return gson.toJson(DAO.dameProductos());
         });
 
+        get("listaProductosPorCategoria/:categoria", (request, response)->{
+            String cat=request.params(":categoria");
+            response.type("application/json");
+
+            return gson.toJson(DAO.dameProductosPorCategoria(cat));
+        });
+
         post("agregarProducto", (request, response) -> {
             String datosEntrada = request.body();
             Gson gson = new Gson();

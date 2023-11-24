@@ -162,7 +162,7 @@ img.logo {
     border-radius: 5px 5px 0 0;
 }
 
-.item .btnadd button{
+.item button{
     font-weight: 700;
     color: #1b3039;
     background: #eceff1;
@@ -172,7 +172,7 @@ img.logo {
     transition: all 0.3s ease 0s;
 }
 
-.item .btnadd button:hover{
+.item button:hover{
     background-color: #e2f1f8;
     color: #8AC4FF;
     transform: scale(1.1);
@@ -181,6 +181,7 @@ img.logo {
 .item:hover img {
     transform: scale(1.2);
 }
+
 .modificar{
     display: block;
     padding: 25px;
