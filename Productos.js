@@ -29,10 +29,16 @@ axios.get(URL+'/listaProductos')
             elementoProductoInfo.appendChild(precioDelProducto);
     
             var botonAgregarAlCarrito = document.createElement('button');
-            botonAgregarAlCarrito.textContent = 'Añadir al carro';
+            botonAgregarAlCarrito.textContent = '';
             botonAgregarAlCarrito.className ='btnadd';
             botonAgregarAlCarrito.addEventListener('click', function() {
-            agregarAlCarrito(producto.idProducto);
+            editar(producto.idProducto);
+            
+            var botonAgregarAlCarrito = document.createElement('button');
+            botonAgregarAlCarrito.textContent = '';
+            botonAgregarAlCarrito.className ='btnadd';
+            botonAgregarAlCarrito.addEventListener('click', function() {
+            borrar(producto.idProducto);
         });
         elementoProducto.appendChild(botonAgregarAlCarrito);
 
