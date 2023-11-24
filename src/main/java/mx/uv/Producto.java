@@ -5,17 +5,23 @@ public class Producto {
     private String nombre;
     private float precio;
     private String fotografia;
+    private String categoria;
     
     public Producto(){
 
     }
 
-    public Producto(int idProducto, String nombre, float precio, String fotografia) {
-        this.idProducto=idProducto;
+    
+
+    public Producto(int idProducto, String nombre, float precio, String fotografia, String categoria) {
+        this.idProducto = idProducto;
         this.nombre = nombre;
         this.precio = precio;
         this.fotografia = fotografia;
+        this.categoria = categoria;
     }
+
+
 
     public int getIdProducto() {
         return idProducto;
@@ -49,7 +55,19 @@ public class Producto {
         this.fotografia = fotografia;
     }
 
-    
+
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+        
 
     
 

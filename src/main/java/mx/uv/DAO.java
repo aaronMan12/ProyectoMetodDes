@@ -26,9 +26,13 @@ public class DAO {
             String sql = "SELECT * from producto";
             stm = (Statement) conn.createStatement();
             rs = stm.executeQuery(sql);
+
             while (rs.next()) {
-                Producto producto = new Producto(rs.getInt("idProducto"), rs.getString("nombre"), rs.getFloat("precio"),
-                        rs.getString("fotografia"));
+                Producto producto = new Producto(rs.getInt("idProducto"), 
+                rs.getString("nombre"),
+                rs.getFloat("precio"),
+                rs.getString("fotografia"),
+                rs.getString("categoria"));
                 listaDeProductos.add(producto);
             }
         } catch (Exception e) {
@@ -58,6 +62,59 @@ public class DAO {
 
         return listaDeProductos;
     }
+
+
+     public static List<Producto> dameProductosPorCategoria(String categoria) {
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        Connection conn = null;
+        List<Producto> listaDeProductos = new ArrayList<>();
+
+        conn = Conexion.getConnection();
+
+        try {
+            String sql = "SELECT * FROM producto WHERE categoria = ?";
+            stm = (PreparedStatement) conn.prepareStatement(sql);
+            stm.setString(1, categoria);
+            //stm.executeUpdate();
+            rs = stm.executeQuery();
+            while (rs.next()) {
+                Producto producto = new Producto(rs.getInt("idProducto"), 
+                rs.getString("nombre"),
+                rs.getFloat("precio"),
+                rs.getString("fotografia"),
+                rs.getString("categoria"));
+                listaDeProductos.add(producto);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            if (rs != null)
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    System.out.println(e);
+                }
+            rs = null;
+            if (stm != null) {
+                try {
+                    stm.close();
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+                stm = null;
+            }
+            try {
+                conn.close();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+
+        return listaDeProductos;
+    }
+
+
 
     public static String agregarProducto(Producto u) {
         PreparedStatement stm = null;
