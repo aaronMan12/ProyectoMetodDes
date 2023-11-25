@@ -16,6 +16,7 @@ axios.get(URL+'/listaProductos')
             elementoProducto.appendChild(imagenDelProducto);
             
             var elementoProductoInfo = document.createElement('div');
+            elementoProductoInfo.className ='info-producto';
             elementoProducto.appendChild(elementoProductoInfo);
     
             var nombreDelProducto = document.createElement('h2');
@@ -28,16 +29,10 @@ axios.get(URL+'/listaProductos')
             elementoProductoInfo.appendChild(precioDelProducto);
     
             var botonAgregarAlCarrito = document.createElement('button');
-            botonAgregarAlCarrito.textContent = '';
+            botonAgregarAlCarrito.textContent = 'Añadir al carro';
             botonAgregarAlCarrito.className ='btnadd';
             botonAgregarAlCarrito.addEventListener('click', function() {
-            editar(producto.idProducto);
-            
-            var botonAgregarAlCarrito = document.createElement('button');
-            botonAgregarAlCarrito.textContent = '';
-            botonAgregarAlCarrito.className ='btnadd';
-            botonAgregarAlCarrito.addEventListener('click', function() {
-            borrar(producto.idProducto);
+            agregarAlCarrito(producto.id);
         });
         elementoProducto.appendChild(botonAgregarAlCarrito);
 
@@ -49,14 +44,7 @@ axios.get(URL+'/listaProductos')
 });
 
 function agregarAlCarrito(idDelProducto) {
+console.log('Agregar al carrito: ' + idDelProducto);
 // Agrega tu código aquí para agregar el producto al carrito.
 // Esto podría implicar enviar una solicitud a tu servidor, actualizar la interfaz de usuario, etc.
-console.log('Agregar al carrito: ' + idDelProducto);
- axios.post(URL + `/carrito/agregar/${idDelProducto}`)
- .then(response => {
-     console.log(response.data);
- })
- .catch(error => {
-     console.error(error);
- });
 }
