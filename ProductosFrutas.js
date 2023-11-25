@@ -1,5 +1,5 @@
 const URL = 'http://localhost:80'
-axios.get(URL+'/listaProductosPorCategoria/frutasV')
+axios.get(URL+'/listaProductosPorCategoria/Frutas y verduras')
 .then(function (respuesta) {
         
         var productos = respuesta.data;
@@ -11,7 +11,7 @@ axios.get(URL+'/listaProductosPorCategoria/frutasV')
             elementoProducto.className ='item';
     
             var imagenDelProducto = document.createElement('img');
-            imagenDelProducto.src = producto.fotografia;
+            imagenDelProducto.src ='data:image/jpeg;base64,' + producto.fotografia
             elementoProducto.appendChild(imagenDelProducto);
             
             var elementoProductoInfo = document.createElement('div');

@@ -83,7 +83,7 @@ public class DAO {
                 producto.setIdProducto(rs.getInt("idProducto"));
                 producto.setNombre(rs.getString("nombre"));
                 producto.setPrecio(rs.getFloat("precio"));
-                producto.setFotografia(rs.getString("fotografiaBase64"));
+                producto.setFotografia(rs.getString("fotografia"));
                 producto.setCategoria(rs.getString("categoria"));
                 listaDeProductos.add(producto);
             }

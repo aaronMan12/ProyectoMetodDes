@@ -1,5 +1,5 @@
 const URL = 'http://localhost:80'
-axios.get(URL+'/listaProductosPorCategoria/animales')
+axios.get(URL+'/listaProductosPorCategoria/Productos Animales')
 .then(function (respuesta) {
         
         var productos = respuesta.data;
@@ -11,7 +11,7 @@ axios.get(URL+'/listaProductosPorCategoria/animales')
             elementoProducto.className ='item';
     
             var imagenDelProducto = document.createElement('img');
-            imagenDelProducto.src = producto.fotografia;
+            imagenDelProducto.src ='data:image/jpeg;base64,' + producto.fotografia
             elementoProducto.appendChild(imagenDelProducto);
             
             var elementoProductoInfo = document.createElement('div');

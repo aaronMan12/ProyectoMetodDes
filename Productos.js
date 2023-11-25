@@ -12,8 +12,8 @@ axios.get(URL+'/listaProductos')
             elementoProducto.className ='item';
     
             var imagenDelProducto = document.createElement('img');
-            imagenDelProducto.src = producto.fotografia;
-            ///imagenDelProducto.src ='data:image/jpeg;base64,' + producto.fotografia
+            //imagenDelProducto.src = producto.fotografia;
+            imagenDelProducto.src ='data:image/jpeg;base64,' + producto.fotografia
             elementoProducto.appendChild(imagenDelProducto);
             
             var elementoProductoInfo = document.createElement('div');
