@@ -1,37 +1,61 @@
-body{
-    background: #0CAADC;
-    background: radial-gradient(circle, #11B5E4 0%, #1481BA 100%);
-}
 *{
     box-sizing: border-box;
-    font-family: 'Franklin Gothic Medium'}
+    font-family: 'Franklin Gothic Medium'
+}
+
 form{
-    background: lightgray;
+    background: #4699bd;
     box-shadow: 10px 20px 20px;
-    width:300px;
-    margin-top: auto;
+    font-size: 20px;
+    width:400px;
+    height: 400px;
     margin: 0 auto;
+    margin-top: 1%;
     border : 1px solid grey;
-    padding: 15px;
-    border-radius: 5px;
+    padding: 25px;
+    border-radius: 5%;
 }
-label{
-    display: block;
+
+.imagen {
+    width: 300px;
+    height: 100px;
 }
+
+.btnSubmit {
+    background-color: #dbd98d;
+    border: none;
+    color: rgb(11, 0, 0);
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+    margin-left: 38%;
+    
+}
+
 input{
     margin-bottom: 15px;
+    margin-top: 10px;
     border : 1px solid lightgrey;
     border-radius: 10px;
     width: 100%;
     padding: 10px;
 }
+
 input[type="submit"]{
-    background-color:#034748;
+    background-color:#000000;
     color: white;
 }
+
 h1{
+    margin-top: 30px;
     text-align: center;
 }
+
 label[id="inicio"]{
     text-align: center;
     font-weight: bold;
