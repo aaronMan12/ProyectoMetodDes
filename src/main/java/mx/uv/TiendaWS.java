@@ -107,10 +107,23 @@ public class TiendaWS {
 
         delete("borrar-producto-carrito/:idProducto", (request,response)->{
             int idProducto=Integer.parseInt(request.params(":idProducto"));
-
             String respuesta=DAO.borrarProductodelCarrito(idProducto);
 
             return respuesta;
         });  
+
+        put("registrarFoto/:idProducto",(request, response)->{
+            int idProducto =Integer.parseInt(request.params(":idProducto"));
+            byte[] fotografiaBase64=request.bodyAsBytes();
+
+            Producto producto= new Producto();
+            producto.setIdProducto(idProducto);
+            producto.setFotografiaBase64(fotografiaBase64);
+
+            String actualizarFoto=DAO.actualizarfotografiaBase64Producto(producto);  
+
+            return actualizarFoto;
+        });
+
     }
 }

@@ -6,22 +6,20 @@ public class Producto {
     private float precio;
     private String fotografia;
     private String categoria;
-    
+    private byte[] fotografiaBase64;
     public Producto(){
 
     }
-
-    
-
-    public Producto(int idProducto, String nombre, float precio, String fotografia, String categoria) {
+ 
+    public Producto(int idProducto, String nombre, float precio, String fotografia, String categoria,
+            byte[] fotografiaBase64) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.precio = precio;
         this.fotografia = fotografia;
         this.categoria = categoria;
+        this.fotografiaBase64 = fotografiaBase64;
     }
-
-
 
     public int getIdProducto() {
         return idProducto;
@@ -47,15 +45,6 @@ public class Producto {
         this.precio = precio;
     }
 
-    public String getFotografia() {
-        return fotografia;
-    }
-
-    public void setFotografia(String fotografia) {
-        this.fotografia = fotografia;
-    }
-
-
 
     public String getCategoria() {
         return categoria;
@@ -67,7 +56,22 @@ public class Producto {
         this.categoria = categoria;
     }
 
-        
+    public String getFotografia() {
+        return fotografia;
+    }
+
+    public void setFotografia(String fotografia) {
+        this.fotografia = fotografia;
+    }
+
+    public byte[] getFotografiaBase64() {
+        return fotografiaBase64;
+    }
+
+    public void setFotografiaBase64(byte[] fotografiaBase64) {
+        this.fotografiaBase64 = fotografiaBase64;
+    }
+
 
     
 

@@ -23,16 +23,17 @@ public class DAO {
         conn = Conexion.getConnection();
 
         try {
-            String sql = "SELECT * from producto";
+            String sql = "SELECT idProducto, nombre , precio ,TO_BASE64(fotografia) AS fotografia, categoria FROM producto";
             stm = (Statement) conn.createStatement();
             rs = stm.executeQuery(sql);
 
             while (rs.next()) {
-                Producto producto = new Producto(rs.getInt("idProducto"), 
-                rs.getString("nombre"),
-                rs.getFloat("precio"),
-                rs.getString("fotografia"),
-                rs.getString("categoria"));
+                Producto producto = new Producto();
+                producto.setIdProducto(rs.getInt("idProducto"));
+                producto.setNombre(rs.getString("nombre"));
+                producto.setPrecio(rs.getFloat("precio"));
+                producto.setFotografia(rs.getString("fotografia"));
+                producto.setCategoria(rs.getString("categoria"));
                 listaDeProductos.add(producto);
             }
         } catch (Exception e) {
@@ -73,17 +74,17 @@ public class DAO {
         conn = Conexion.getConnection();
 
         try {
-            String sql = "SELECT * FROM producto WHERE categoria = ?";
+            String sql = "SELECT idProducto, nombre , precio ,TO_BASE64(fotografia) AS fotografia, categoria FROM producto WHERE categoria = ?";
             stm = (PreparedStatement) conn.prepareStatement(sql);
             stm.setString(1, categoria);
-            //stm.executeUpdate();
             rs = stm.executeQuery();
             while (rs.next()) {
-                Producto producto = new Producto(rs.getInt("idProducto"), 
-                rs.getString("nombre"),
-                rs.getFloat("precio"),
-                rs.getString("fotografia"),
-                rs.getString("categoria"));
+                Producto producto = new Producto();
+                producto.setIdProducto(rs.getInt("idProducto"));
+                producto.setNombre(rs.getString("nombre"));
+                producto.setPrecio(rs.getFloat("precio"));
+                producto.setFotografia(rs.getString("fotografiaBase64"));
+                producto.setCategoria(rs.getString("categoria"));
                 listaDeProductos.add(producto);
             }
         } catch (Exception e) {
@@ -123,11 +124,12 @@ public class DAO {
 
         conn = Conexion.getConnection();
         try {
-            String sql = "INSERT INTO producto (nombre, precio, fotografia) values (?,?,?)";
+            String sql = "INSERT INTO producto (nombre, precio, fotografiaBase64, categoria) values (?,?,?,?)";
             stm = (PreparedStatement) conn.prepareStatement(sql);
             stm.setString(1, u.getNombre());
             stm.setFloat(2, u.getPrecio());
-            stm.setString(3, u.getFotografia());
+            stm.setBytes(3, u.getFotografiaBase64());
+            stm.setString(4, u.getCategoria());
             if (stm.executeUpdate() > 0)
                 msj = "Producto agregado";
             else
@@ -204,11 +206,11 @@ public class DAO {
 
         connection = Conexion.getConnection();
         try {
-            String actualizacion = " update producto set nombre=?, precio=?, fotografia=?  where idProducto=?";
+            String actualizacion = " update producto set nombre=?, precio=?, fotografiaBase64=?  where idProducto=?";
             st = (PreparedStatement) connection.prepareStatement(actualizacion);
             st.setString(1, producto.getNombre());
             st.setFloat(2, producto.getPrecio());
-            st.setString(3, producto.getFotografia());
+            st.setBytes(3, producto.getFotografiaBase64());
             st.setInt(4, producto.getIdProducto());
 
             int respuesta = st.executeUpdate();
@@ -232,6 +234,42 @@ public class DAO {
 
         return mjs;
     }
+
+
+    public static String actualizarfotografiaBase64Producto(Producto producto) {
+        Connection connection;
+        String mjs = null;
+        PreparedStatement st;
+
+        connection = Conexion.getConnection();
+        try {
+            String actualizacion = "update producto set fotografia= ?  where idProducto= ?";
+            st = (PreparedStatement) connection.prepareStatement(actualizacion);
+            st.setBytes(1, producto.getFotografiaBase64());
+            st.setFloat(2, producto.getIdProducto());
+
+            int respuesta = st.executeUpdate();
+
+            if (respuesta != 0) {
+                mjs = "Foto actualizada";
+            } else {
+
+                mjs = "Error al actualizar la foto";
+            }
+        } catch (Exception e) {
+            System.out.println("Error de parametros" + e);
+
+        }
+        try {
+            connection.close();
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+
+        return mjs;
+    }
+
 
     public static String borrarProducto(Integer idProducto) {
         Connection connection;
