@@ -35,16 +35,22 @@ const precio = document.getElementById("acprecio").value
 var fotografia = document.querySelector('#acfotografia').files[0];
 const categoria = document.getElementById('categoria').value;
 
-if (!isNaN(idProducto) && !isNaN(precio)) {
-    modificarProducto(idProducto,nombre,precio,categoria)
-    subirFotografia(idProducto,fotografia)
-    
-}if (isNaN(precio)) {
-    alert("ERROR PRECIO TIENE QUE SER NUMERO")
-    
-} if(isNaN(idProducto)) {
-    alert("ERROR ID TIENE QUE SER NUMERO")   
-}
+var reader = new FileReader();
+reader.onload = function(event) {
+    var fileData = event.target.result;
+    if (!isNaN(idProducto) && !isNaN(precio)) {
+        modificarProducto(idProducto,nombre,precio,categoria)
+         subirFotografia(idProducto,fileData)
+         
+     }if (isNaN(precio)) {
+         alert("ERROR PRECIO TIENE QUE SER NUMERO")
+         
+     } if(isNaN(idProducto)) {
+         alert("ERROR ID TIENE QUE SER NUMERO")   
+     }
+     
+};
+reader.readAsArrayBuffer(fotografia);
 });     
 
 
@@ -64,19 +70,17 @@ function llenarformulario(id, nombre, precio,fotografia) {
     document.getElementById('acfotografia').value = fotografia;
 }
 
-function subirFotografia(idProducto,fotografia){
-     var formData = new FormData();
-
-     formData.append('file', fotografia);
+function subirFotografia(idProducto,fileData){
+  
  
-     axios.put(URL+'registrarFoto/'+idProducto, formData, {
-         headers: {
-             'Content-Type': 'multipart/form-data'
-         }
-     })
+     axios.put(URL+'registrarFoto/'+idProducto, fileData, {
+        headers: {
+            'Content-Type': 'image/jpeg'
+        }
+    })
      .then(function (response) {
          console.log(response);
-         console.log('producto actualizado')
+         console.log('producto foto actualizado')
      })
      .catch(function (error) {
          console.log(error);
