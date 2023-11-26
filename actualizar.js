@@ -4,14 +4,14 @@ const accion_boton_actualizar
     = document.getElementById("botonActualizar")
 
 
-    function modificarProducto(_idProducto,_nombre,_precio,_foto){
-        console.log(_idProducto,_nombre,_precio,_foto)
-         axios.put(URL+'actualizarProducto/'+_idProducto,
+    function modificarProducto(_idProducto,_nombre,_precio,categoria){
+            axios.put(URL+'actualizarProducto/'+_idProducto,
              {
              "nombre": _nombre,
              "precio": _precio,
-             "fotografia": _foto
+             "categoria":categoria
              }).then(function (response) {
+                console.log('producto actualizado')
              alert(response.data)
              location.reload();
      
@@ -32,9 +32,12 @@ evt.preventDefault();
 const  idProducto =document.getElementById("acid").value
 const nombre = document.getElementById("acnombre").value
 const precio = document.getElementById("acprecio").value
-const fotografia = document.getElementById("acfotografia").value
+var fotografia = document.querySelector('#acfotografia').files[0];
+const categoria = document.getElementById('categoria').value;
+
 if (!isNaN(idProducto) && !isNaN(precio)) {
-    modificarProducto(idProducto,nombre,precio,fotografia)
+    modificarProducto(idProducto,nombre,precio,categoria)
+    subirFotografia(idProducto,fotografia)
     
 }if (isNaN(precio)) {
     alert("ERROR PRECIO TIENE QUE SER NUMERO")
@@ -59,4 +62,23 @@ function llenarformulario(id, nombre, precio,fotografia) {
     document.getElementById('acnombre').value = nombre;
     document.getElementById('acprecio').value = precio;
     document.getElementById('acfotografia').value = fotografia;
+}
+
+function subirFotografia(idProducto,fotografia){
+     var formData = new FormData();
+
+     formData.append('file', fotografia);
+ 
+     axios.put(URL+'registrarFoto/'+idProducto, formData, {
+         headers: {
+             'Content-Type': 'multipart/form-data'
+         }
+     })
+     .then(function (response) {
+         console.log(response);
+         console.log('producto actualizado')
+     })
+     .catch(function (error) {
+         console.log(error);
+     });
 }

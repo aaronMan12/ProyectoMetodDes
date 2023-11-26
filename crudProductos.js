@@ -14,32 +14,10 @@ const accion_boton_crear
 
     const _nombre = document.getElementById("nombre").value
     const _precio = document.getElementById("precio").value
-    const _categoria = document.getElementById("categorias").value
-    var _fotografia = document.getElementById("fotografia").value
-
-  
-   if (fotografiaFile == null) {
-  
-    console.log("foto no obtenida")
-  
-} else {
-    var fotografiaFile = _fotografia.files[0];
-    var reader = new FileReader();
-    reader.onload = function (e) {
-        //codifica a base 64 porque aron quiere 
-        var fotografiaBase64 = e.target.result;
-        console.log("fotografia convertida a base 64: " + fotografiaBase64)
-        /*--------------------------------------quitar comentario cuando el sbackend de la foto este listo---------------------------*/
-        // subirFoto(fotografiaBase64);
-         /*--------------------------------------quitar comentario cuando el sbackend de la foto este listo---------------------------*/
-    }
-    reader.readAsDataURL(fotografiaFile);
-   }
-
-
+    const _categoria = document.getElementById("categoria").value
 
     if (!isNaN(_precio)) {
-     agregarProducto(_nombre,_precio,_fotografia,_categoria)
+     agregarProducto(_nombre,_precio,_categoria)
         alert("producto de categoria "+_categoria)
     }
     else{
@@ -51,13 +29,12 @@ const accion_boton_crear
 
 });
 
-function agregarProducto(_nombre,_precio,_foto,_categoria) {
+function agregarProducto(_nombre,_precio,_categoria) {
     
     axios.post(URL + 'agregarProducto',
     {
         "nombre": _nombre,
-        "precio": _precio,
-        "fotografia": _foto,    
+        "precio": _precio,  
         "categoria":_categoria
      })
     .then( function (response) {
@@ -66,19 +43,6 @@ function agregarProducto(_nombre,_precio,_foto,_categoria) {
     }).catch(function (error) {
     console.log(error)
 })
-}
-
-function subirFoto(fotoConvertida) {
-    axios.post(URL + 'agregarProducto',
-        {
-            "fotografia":fotoConvertida,    
-         })
-        .then( function (response) {
-            alert(response.data)
-            location.reload();
-        }).catch(function (error) {
-        console.log(error)
-    })
 }
 
 
