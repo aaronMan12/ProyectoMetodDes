@@ -87,6 +87,7 @@ h2 {
     gap: 25px;
     flex: 1 1 300px;
     margin-bottom: 25px;
+    overflow: hidden;
 }
 
 .contenedor>img {
@@ -115,6 +116,7 @@ h2 {
 .contenedor>image{
     max-width: 300px;
 }
+
 
 .contenedor .botonesadmin{
     font-weight: 700;
