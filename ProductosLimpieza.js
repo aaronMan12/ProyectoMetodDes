@@ -25,14 +25,27 @@ axios.get(URL+'/listaProductosPorCategoria/Limpieza')
             precioDelProducto.className='price'
             precioDelProducto.textContent = 'Precio: $' + producto.precio;
             elementoProductoInfo.appendChild(precioDelProducto);
-    
             var botonAgregarAlCarrito = document.createElement('button');
-            botonAgregarAlCarrito.textContent = 'Añadir al carro';
+            botonAgregarAlCarrito.textContent = 'Actualizar';
             botonAgregarAlCarrito.className ='btnadd';
             botonAgregarAlCarrito.addEventListener('click', function() {
-            agregarAlCarrito(producto.idProducto);
+                var datosProducto = new URLSearchParams();
+                datosProducto.append("id",producto.idProducto);
+                datosProducto.append("nombre",producto.nombre);
+                datosProducto.append("precio",producto.precio);
+           
+                location.href ='http://127.0.0.1:5501/Actualizar.html?'+ datosProducto.toString();    
+         
         });
         elementoProducto.appendChild(botonAgregarAlCarrito);
+
+        var botoneliminar = document.createElement('button');
+        botoneliminar.textContent = 'eliminar';
+        botoneliminar.className ='btnadd';
+        botoneliminar.addEventListener('click', function() {
+            eliminarProducto(producto.idProducto)
+        });
+        elementoProducto.appendChild(botoneliminar);
 
         listaDeProductos.appendChild(elementoProducto);
     });
@@ -40,3 +53,14 @@ axios.get(URL+'/listaProductosPorCategoria/Limpieza')
 .catch(function (error) {
     console.log(error);
 });
+
+
+function eliminarProducto(_idProducto) {
+    axios.delete(URL + "/borrarProducto/" + _idProducto)
+    .then( function (response) {
+        alert(response.data)
+        location.reload();
+    }).catch(function (error) {
+        console.log(error)
+    });
+    }

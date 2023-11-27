@@ -124,7 +124,7 @@ public class DAO {
 
         conn = Conexion.getConnection();
         try {
-            String sql = "INSERT INTO producto (nombre, precio, fotografiaBase64, categoria) values (?,?,?,?)";
+            String sql = "INSERT INTO producto (nombre, precio, fotografia, categoria) values (?,?,?,?)";
             stm = (PreparedStatement) conn.prepareStatement(sql);
             stm.setString(1, u.getNombre());
             stm.setFloat(2, u.getPrecio());
@@ -206,7 +206,7 @@ public class DAO {
 
         connection = Conexion.getConnection();
         try {
-            String actualizacion = " update producto set nombre=?, precio=?, fotografiaBase64=?  where idProducto=?";
+            String actualizacion = " update producto set nombre=?, precio=?, fotografia=?  where idProducto=?";
             st = (PreparedStatement) connection.prepareStatement(actualizacion);
             st.setString(1, producto.getNombre());
             st.setFloat(2, producto.getPrecio());
