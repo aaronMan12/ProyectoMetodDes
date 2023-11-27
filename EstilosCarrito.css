@@ -33,7 +33,7 @@ body{
 img.logo {
     max-height: 80px;
     height: auto;
-    width: 70px;
+    width: auto;
 }
 
 .header.logo img{
