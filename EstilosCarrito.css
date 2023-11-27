@@ -183,6 +183,35 @@ th {
     max-width: 65%;
     margin: auto;
 }
+.contenedor button{
+    font-weight: 700;
+    color: #1b3039;
+    background: #eceff1;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+.contenedor button:hover{
+    background-color: #e2f1f8;
+    color: #cc0707;
+    transform: scale(1.1);
+}
+#boton-de-checkout{
+    font-weight: 700;
+    color: #1b3039;
+    background: #eceff1;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+#boton-de-checkout:hover{
+    background-color: #e2f1f8;
+    color: #050d51;
+    transform: scale(1.1);
+}
 .footer{
     margin-top: 25px;
     background:#005377;
