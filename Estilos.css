@@ -70,24 +70,6 @@ img.logo {
     color: #8AC4FF;
 }
 
-
-.header .btncarrito button{
-    font-weight: 700;
-    color: #1b3039;
-    padding: 9px 25px;
-    background: #eceff1;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease 0s;
-}
-
-.header .btncarrito button:hover{
-    background-color: #e2f1f8;
-    color: #8AC4FF;
-    transform: scale(1.1);
-}
-
 .carrusel{
     width: 1280px;
     height: auto;
@@ -253,13 +235,13 @@ img.logo {
     width:100%;
     margin:1% 0%;
     padding:0.6% 0%;
-    color:gray;
+    color: #ffff;
     font-size:0.8em;
     }
     
     .footer .row a{
     text-decoration:none;
-    color:gray;
+    color:#ffff;
     transition:0.5s;
     }
     
