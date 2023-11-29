@@ -40,7 +40,7 @@ axios.get(URL+'/listaProductosPorCategoria/Productos Animales')
         elementoProducto.appendChild(botonAgregarAlCarrito);
 
         var botoneliminar = document.createElement('button');
-        botoneliminar.textContent = 'eliminar';
+        botoneliminar.textContent = 'Eliminar';
         botoneliminar.className ='btnadd';
         botoneliminar.addEventListener('click', function() {
             eliminarProducto(producto.idProducto)

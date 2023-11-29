@@ -172,13 +172,13 @@ h2 {
     width:100%;
     margin:1% 0%;
     padding:0.6% 0%;
-    color:gray;
+    color:#ffff;
     font-size:0.8em;
     }
     
     .footer .row a{
     text-decoration:none;
-    color:gray;
+    color:#ffff;
     transition:0.5s;
     }
     
