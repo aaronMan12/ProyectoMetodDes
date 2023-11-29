@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abarrotes</title>
     <link rel="icon" type="image/svg+xml" href="/img/Logo_chico.png" />
-    <link rel="stylesheet" href="EstilosCarrito.css">
+    <link rel="stylesheet" href="Estilos.css">
 </head>
 <body>
     <header class="header">
@@ -22,34 +22,31 @@
         </nav>
         <a href="carrito.html" class="btncarrito"><button ><img src="/img/carrito.png" width="50px" height="50px"></button></a>
     </header> 
-    <div class="contenedor">
-        <div class="panel">
-            <h1>Shopping Cart</h1>
-            <table id="tabla-del-carrito">
-                <tr>
-                    <th>Nombre</th>
-                    <th>Precio</th>
-                    <th>Cantidad</th>
-                    <th>Total</th>
-                    <th>Acciones</th>
-                </tr>
-            </table>
-            <button id="boton-de-checkout">Realizar Checkout</button>
-        </div>
+    <div class="carrusel">
+        <ul>
+            <li>
+                <img src="/img/Publicidad1.png" alt="imagen 1">
+            </li>
+            <li>
+                <img src="/img/Publicidad2.png" alt="imagen 2">
+            </li>
+            <li>
+                <img src="/img/Publicidad3.png" alt="imagen 3">
+            </li>
+            <li>
+                <img src="/img/Publicidad4.png" alt="imagen 4">
+            </li>
+        </ul>
     </div>
-
     
-
+    <div class="container-items" id="product-list">
+        
+    </div>
+    
 </body>
 <footer>
     <div class="footer">
-    <div class="row">
-    <ul>
-    <li><a href="Crear.html">Crear Producto </a></li>
-    <li><a href="Actualizar.html">Actualizar Producto</a></li>
-    <li><a href="Eliminar.html">Eliminar producto</a></li>
-    </ul>
-    </div>
+    
     <div class="row">
     Abarrotes el compadre SA de CV
     </div>
@@ -57,7 +54,7 @@
     </footer>
     
 <script src="axios.min.js"></script>
-<script src="carrito.js"></script>
+<script src="ProductosHigiene.js"></script>
 
 
     

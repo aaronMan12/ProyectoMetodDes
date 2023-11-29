@@ -33,10 +33,15 @@ form.addEventListener('submit', async ( e ) => {
       "password": password
       // Aquí tu lo pondrías así: "user: user" y "password: password", pero como la llave y variable tienen el mismo nombre js lo toma como llave-valor no marcará errores, si es que tu lo pones "user: inputUser" ya no funcionaría, solo jala cuando la variable tiene el mismo nombre que el identificador o llave. Basicamente hacerlo así "user: user" es redundante para JavaScript 🙂, espero haber sido claro.
     })
-
-    alert("Bienvenido al sistema "+ user)
-    location.href ='http://127.0.0.1:5501/paginaPrincipal.html';
-    console.log(data.data);
+    if(user=="eje@eje.com"&&password=="123"){
+        alert("Bienvenido al sistema "+ user)
+        location.href ='http://127.0.0.1:5501/paginaPrincipal.html';
+        console.log(data.data);
+    }else{
+        alert("Bienvenido al sistema "+ user)
+        location.href ='http://127.0.0.1:5501/vista_cliente/paginaPrincipal_frutas.html';
+        console.log(data.data);
+    }
 
   } catch (error) {
    console.log(error);
