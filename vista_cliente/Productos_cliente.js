@@ -1,4 +1,4 @@
-const URL = 'http://localhost:80/vista_cliente'
+const URL = 'http://localhost:80'
 
 axios.get(URL+'/listaProductos')
 .then(function (respuesta) {
