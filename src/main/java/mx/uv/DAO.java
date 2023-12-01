@@ -23,7 +23,7 @@ public class DAO {
         conn = Conexion.getConnection();
 
         try {
-            String sql = "SELECT idProducto, nombre , precio ,TO_BASE64(fotografia) AS fotografia, categoria FROM producto";
+            String sql = "SELECT idProducto, nombre , precio ,fotografia, categoria FROM producto";
             stm = (Statement) conn.createStatement();
             rs = stm.executeQuery(sql);
 
@@ -74,7 +74,7 @@ public class DAO {
         conn = Conexion.getConnection();
 
         try {
-            String sql = "SELECT idProducto, nombre , precio ,TO_BASE64(fotografia) AS fotografia, categoria FROM producto WHERE categoria = ?";
+            String sql = "SELECT idProducto, nombre , precio ,fotografia, categoria FROM producto WHERE categoria = ?";
             stm = (PreparedStatement) conn.prepareStatement(sql);
             stm.setString(1, categoria);
             rs = stm.executeQuery();
@@ -128,7 +128,7 @@ public class DAO {
             stm = (PreparedStatement) conn.prepareStatement(sql);
             stm.setString(1, u.getNombre());
             stm.setFloat(2, u.getPrecio());
-            stm.setBytes(3, u.getFotografiaBase64());
+            stm.setString(3, u.getFotografia());
             stm.setString(4, u.getCategoria());
             if (stm.executeUpdate() > 0)
                 msj = "Producto agregado";
@@ -210,7 +210,7 @@ public class DAO {
             st = (PreparedStatement) connection.prepareStatement(actualizacion);
             st.setString(1, producto.getNombre());
             st.setFloat(2, producto.getPrecio());
-            st.setBytes(3, producto.getFotografiaBase64());
+            st.setString(3, producto.getFotografia());
             st.setInt(4, producto.getIdProducto());
 
             int respuesta = st.executeUpdate();

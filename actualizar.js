@@ -4,9 +4,8 @@ var datosProducto = new URLSearchParams(window.location.search);
     const idProducto =  datosProducto.get("id");
     var nombre = datosProducto.get("nombre");
     var precio = datosProducto.get("precio");
-    var foto = datosProducto.get("foto");
     var categoria = datosProducto.get("categoria");
-    llenarformulario(nombre,precio,foto,categoria);
+    llenarformulario(nombre,precio,categoria);
     
 
 
@@ -14,12 +13,13 @@ const accion_boton_actualizar
     = document.getElementById("botonActualizar")
 
 
-    function modificarProducto(_idProducto,_nombre,_precio,categoria){
+    function modificarProducto(_idProducto,_nombre,_precio,categoria,fotografia){
             axios.put(URL+'actualizarProducto/'+_idProducto,
              {
              "nombre": _nombre,
              "precio": _precio,
-             "categoria":categoria
+             "categoria":categoria,
+             "fotografia":fotografia
              }).then(function (response) {
                 console.log('producto actualizado')
              alert(response.data)
@@ -38,42 +38,40 @@ const accion_boton_actualizar
             
 accion_boton_actualizar.addEventListener('click',
 function (evt) {
-evt.preventDefault();
-const nombre = document.getElementById("acnombre").value
-const precio = document.getElementById("acprecio").value
-var fotografia = document.querySelector('#acfotografia').files[0];
-const categoria = document.getElementById('categoria').value;
+    console.log("entro event");
+    evt.preventDefault();
 
+    const _nombre = document.getElementById("acnombre").value;
+    const _precio = document.getElementById("acprecio").value;
+    const _categoria = document.getElementById("categoria").value;
+    const _fotografiaInput = document.getElementById("acfotografia");
 
-    if (fotografia == null) {
-      
-        console.log("foto no obtenida")
-        modificarProducto(idProducto,nombre,precio,categoria)
-      
-    }else{
-        var reader = new FileReader();
-        reader.onload = function(event) {
-            var fileData = event.target.result;
-            if (!isNaN(idProducto) && !isNaN(precio)) {
-                modificarProducto(idProducto,nombre,precio,categoria)
-                 subirFotografia(idProducto,fileData)
-                 
-             }if (isNaN(precio)) {
-                 alert("ERROR PRECIO TIENE QUE SER NUMERO")
-                 
-             } if(isNaN(idProducto)) {
-                 alert("ERROR ID TIENE QUE SER NUMERO")   
-             }
-             
-        };
-        
-        reader.readAsArrayBuffer(fotografia); 
+    if (!_fotografiaInput.files || _fotografiaInput.files.length === 0) {
+        console.log("foto no obtenida");
+    } else {
+        var fotografiaFile = _fotografiaInput.files[0];
+        var extension = fotografiaFile.name.split('.').pop().toLowerCase();
+
+        if (extension === 'jpg' || extension === 'jpeg' || extension === 'png') {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                // codifica a base64 porque así lo necesitas
+                var fotografiaBase64 = e.target.result;
+                console.log("fotografia convertida a base64: " + fotografiaBase64);
+                modificarProducto(idProducto,_nombre, _precio, _categoria,fotografiaBase64);
+            };
+            reader.readAsDataURL(fotografiaFile);
+        } else {
+            alert("El archivo debe tener una extensión PNG o JPG.");
+        }
     }
-    
 
-});     
-
-
+    if (!isNaN(_precio)) {
+        alert("producto de categoria " + _categoria);
+    } else {
+        alert("Precio tiene que ser un numero");
+    }
+});
 
 function llenarformulario( nombre, precio,categoria) {
     document.getElementById('acnombre').value = nombre;
