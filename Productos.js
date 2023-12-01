@@ -64,6 +64,7 @@ function eliminarProducto(_idProducto) {
         alert(response.data)
         location.reload();
     }).catch(function (error) {
+        alert("EL PRODUCTO ESTA EN EL CARRITO DE UN CLIENTE. ELIMINE EL PRODUCTO DEL CARRITO PRIMERO OwO")
         console.log(error)
     });
     }
