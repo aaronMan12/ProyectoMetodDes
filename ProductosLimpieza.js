@@ -11,7 +11,8 @@ axios.get(URL+'/listaProductosPorCategoria/Limpieza')
             elementoProducto.className ='item';
     
             var imagenDelProducto = document.createElement('img');
-            imagenDelProducto.src ='data:image/jpeg;base64,' + producto.fotografia
+            //imagenDelProducto.src = producto.fotografia;
+            imagenDelProducto.src =producto.fotografia
             elementoProducto.appendChild(imagenDelProducto);
             
             var elementoProductoInfo = document.createElement('div');
