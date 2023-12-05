@@ -1,4 +1,6 @@
 
+//  import  jsPDF  from 'jspdf'
+// import autoTable from 'jspdf-autotable'
 
 
 const url = 'http://localhost:80'
@@ -76,22 +78,23 @@ function realizarCheckout(){
     var fechaHora = new Date().toLocaleString();
     var inicio =
     " Abarrotes EL COMPADRE: Los precios que son de la familia\n"+
-    "\t\tRecibo de compra\n"+
-    "Fecha y hora de impresion: "+fechaHora+"\n"+
-    "Producto\t\t\tCantidad\tPrec. Unit.\n";
+    "Recibo de compra\n"+
+    "Fecha y hora de impresion: "+fechaHora+"\n";
     var final =
     "\tFue un placer atenderle, vuelva pronto";
     descargaTicket(inicio, final);
 }
 
-function leerProductos(){
-    
-    
-    
-}
-
 function descargaTicket(i, f){
-    axios.get(url +'/carrito')
+    // const { jsPDF } = require("jspdf");
+    const { jsPDF } = window.jspdf;
+
+    var doc = new jsPDF();
+    doc.text(i, 110, 10, null, null, 'center');
+
+    doc.autoTable({ html: '#tabla-del-carrito' , startY: 30});
+    
+    /*axios.get(url +'/carrito')
     .then(respuesta =>{
         var lista = "";
         var productoSolo = "";
@@ -122,6 +125,8 @@ function descargaTicket(i, f){
         enlace.href = "data:text/plain;charset=utf-8," + encodeURIComponent(mensaje);
         enlace.download = "Recibo.txt";
         enlace.click();
-    })
+    })*/
+    
+    doc.save("Recibo.pdf");
     
 }
