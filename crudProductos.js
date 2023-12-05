@@ -10,30 +10,31 @@ accion_boton_crear.addEventListener('click', function (evt) {
     const _precio = document.getElementById("precio").value;
     const _categoria = document.getElementById("categoria").value;
     const _fotografiaInput = document.getElementById("fotografia");
-
-    if (!_fotografiaInput.files || _fotografiaInput.files.length === 0) {
-        console.log("foto no obtenida");
-    } else {
-        var fotografiaFile = _fotografiaInput.files[0];
-        var extension = fotografiaFile.name.split('.').pop().toLowerCase();
-
-        if (extension === 'jpg' || extension === 'jpeg' || extension === 'png') {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                // codifica a base64 porque así lo necesitas
-                var fotografiaBase64 = e.target.result;
-                console.log("fotografia convertida a base64: " + fotografiaBase64);
-                agregarProducto(_nombre, _precio, fotografiaBase64, _categoria);
-            };
-            reader.readAsDataURL(fotografiaFile);
-        } else {
-            alert("El archivo debe tener una extensión PNG o JPG.");
-        }
-    }
+  
 
     if (!isNaN(_precio)) {
         alert("producto de categoria " + _categoria);
-    } else {
+        if (!_fotografiaInput.files || _fotografiaInput.files.length === 0) {
+            console.log("foto no obtenida");
+            alert("foto no obtenida")
+        } else {
+            var fotografiaFile = _fotografiaInput.files[0];
+            var extension = fotografiaFile.name.split('.').pop().toLowerCase();
+    
+            if (extension === 'jpg' || extension === 'jpeg' || extension === 'png') {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    // codifica a base64 porque así lo necesitas
+                    var fotografiaBase64 = e.target.result;
+                    console.log("fotografia convertida a base64: " + fotografiaBase64);
+                    agregarProducto(_nombre, _precio, fotografiaBase64, _categoria);
+                };
+                reader.readAsDataURL(fotografiaFile);
+            } else {
+                alert("El archivo debe tener una extensión PNG o JPG.");
+            }
+        }
+    }else  {
         alert("Precio tiene que ser un numero");
     }
 });

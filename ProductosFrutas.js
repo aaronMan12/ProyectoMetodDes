@@ -11,7 +11,10 @@ axios.get(URL+'/listaProductosPorCategoria/Frutas y verduras')
             elementoProducto.className ='item';
     
             var imagenDelProducto = document.createElement('img');
+<<<<<<< HEAD
             //imagenDelProducto.src = producto.fotografia;
+=======
+>>>>>>> c60e9c8880abcb4520d466aeb6f9af7c31faabcf
             imagenDelProducto.src =producto.fotografia
             elementoProducto.appendChild(imagenDelProducto);
             
@@ -35,6 +38,7 @@ axios.get(URL+'/listaProductosPorCategoria/Frutas y verduras')
                 datosProducto.append("id",producto.idProducto);
                 datosProducto.append("nombre",producto.nombre);
                 datosProducto.append("precio",producto.precio);
+                datosProducto.append("categoria",producto.categoria);
                 location.href ='http://127.0.0.1:5501/Actualizar.html?'+ datosProducto.toString();    
          
         });
@@ -62,6 +66,8 @@ function eliminarProducto(_idProducto) {
         alert(response.data)
         location.reload();
     }).catch(function (error) {
+        alert("EL PRODUCTO ESTA EN EL CARRITO DE UN CLIENTE. ELIMINE EL PRODUCTO DEL CARRITO PRIMERO OwO")
+        
         console.log(error)
     });
     }

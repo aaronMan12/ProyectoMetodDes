@@ -11,7 +11,7 @@ axios.get(URL+'/listaProductosPorCategoria/Frutas y verduras')
             elementoProducto.className ='item';
     
             var imagenDelProducto = document.createElement('img');
-            imagenDelProducto.src ='data:image/jpeg;base64,' + producto.fotografia
+            imagenDelProducto.src = producto.fotografia
             elementoProducto.appendChild(imagenDelProducto);
             
             var elementoProductoInfo = document.createElement('div');
@@ -47,7 +47,7 @@ function agregarAlCarrito(idDelProducto) {
     console.log('Agregar al carrito: ' + idDelProducto);
      axios.post(URL + `/carrito/agregar/${idDelProducto}`)
      .then(response => {
-         console.log(response.data);
+        alert(response.data)
      })
      .catch(error => {
          console.error(error);
