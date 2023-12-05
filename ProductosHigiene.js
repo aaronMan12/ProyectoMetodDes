@@ -11,12 +11,8 @@ axios.get(URL+'/listaProductosPorCategoria/Higiene Personal')
             elementoProducto.className ='item';
     
             var imagenDelProducto = document.createElement('img');
-<<<<<<< HEAD
             //imagenDelProducto.src = producto.fotografia;
             imagenDelProducto.src =producto.fotografia
-=======
-            imagenDelProducto.src = producto.fotografia
->>>>>>> c60e9c8880abcb4520d466aeb6f9af7c31faabcf
             elementoProducto.appendChild(imagenDelProducto);
             
             var elementoProductoInfo = document.createElement('div');

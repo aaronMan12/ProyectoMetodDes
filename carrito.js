@@ -39,10 +39,10 @@ function updateCart() {
     
                 var celdaPrecio = fila.insertCell();
                 celdaPrecio.textContent = '$'+producto.precio;
-    
+                
                 var celdaCantidad = fila.insertCell();
                 celdaCantidad.textContent = producto.cantidad;
-                celdaCantidad.contentEditable = 'true'; 
+                celdaCantidad.contentEditable = 'false'; 
                 
 
                 var celdaTotal = fila.insertCell();

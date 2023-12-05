@@ -10,11 +10,9 @@ axios.get(URL+'/listaProductosPorCategoria/Frutas y verduras')
             var elementoProducto = document.createElement('div');
             elementoProducto.className ='item';
     
+            
             var imagenDelProducto = document.createElement('img');
-<<<<<<< HEAD
             //imagenDelProducto.src = producto.fotografia;
-=======
->>>>>>> c60e9c8880abcb4520d466aeb6f9af7c31faabcf
             imagenDelProducto.src =producto.fotografia
             elementoProducto.appendChild(imagenDelProducto);
             
